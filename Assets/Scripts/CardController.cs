@@ -71,7 +71,7 @@ public class CardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Tooltip.transform.position = transform.position + new Vector3(0,-5.0f,0);
-        TooltipText.transform.position = transform.position + new Vector3(0,-5f,0);
+        Tooltip.transform.position = transform.position + new Vector3(0,-4.0f,0);
+        TooltipText.transform.position = transform.position + new Vector3(0,-7f,0);
     }
 }
