@@ -5,11 +5,13 @@ public abstract class Card
     public string Name { get; private set; }
     public enum CardType { Offense, Support, Modifier }
     public CardType Type { get; protected set; }
+    public bool isPlayerOwned;
 
-    public Card(string name, CardType type)
+    public Card(string name, CardType type, bool playerOwned)
     {
         Name = name;
         Type = type;
+        isPlayerOwned = playerOwned;
     }
 }
 
