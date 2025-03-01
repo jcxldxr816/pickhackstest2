@@ -4,7 +4,8 @@ public class Placeholder : MonoBehaviour
 {
     public bool isOccupied = false; // Indicates whether this placeholder is occupied by a card
     public Phases currentCard = null; // The Phases object currently occupying this Placeholder
-
+    public int line;
+    public bool isEnemy = false;
     private void OnMouseDown()
     {
         // Ensure a card is selected and this Placeholder is not occupied
