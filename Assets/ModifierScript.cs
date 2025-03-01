@@ -1,20 +1,21 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using TMPro;
 
 public class ModifierScript : MonoBehaviour
 {
+    public ModifierCard modifier;
    //Highlight Variables
     private Material material;    
     private Color MouseOverColor = Color.white;
     public float brightness = 0.5f;
-    public string cardName;
-    public string cardDesc;
     Color OriginalColor;
     void OnMouseOver()
     {
         //Highlight card
         material.SetColor("_EmissionColor", MouseOverColor * brightness);
+        Debug.Log(modifier.Name);
     }
     void OnMouseExit()
     {
@@ -27,6 +28,8 @@ public class ModifierScript : MonoBehaviour
         //Setup highlight card on mouseover
         material = GetComponent<Renderer>().material;
         OriginalColor = material.GetColor("_EmissionColor");
+        //Setup Modifier Class
+        modifier = new ModifierCard("NamePLACEHOLDER","DescriptionPLACEHOLDER",true);
 
     }
 

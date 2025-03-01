@@ -44,11 +44,8 @@ public class SupportCard : Card
 
 public class ModifierCard : Card
 {
-    public string Behavior { get; private set; }
 
-    public ModifierCard(string name, string description, string behavior, bool playerOwned) 
+    public ModifierCard(string name, string description, bool playerOwned) 
         : base(name, description, CardType.Modifier, playerOwned)
-    {
-        Behavior = behavior;
-    }
+    {}
 }
