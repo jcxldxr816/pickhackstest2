@@ -41,18 +41,18 @@ public class Phases : MonoBehaviour
         }
     }
 
-    // private void Update()
-    // {
-    //     // Update the color of the card based on its state
-    //     if (selectedCard == this.gameObject)
-    //     {
-    //         GetComponent<Renderer>().material.color = Color.green; // Highlight the selected card
-    //     }
-    //     else
-    //     {
-    //         GetComponent<Renderer>().material.color = Color.white; // Reset the color
-    //     }
-    // }
+    private void Update()
+    {
+        // Update the color of the card based on its state
+        if (selectedCard == this.gameObject)
+        {
+            GetComponent<Renderer>().material.color = Color.green; // Highlight the selected card
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.white; // Reset the color
+        }
+    }
 
     // Respond to GameManager's OnRoundStart event
     private void OnRoundStart()
