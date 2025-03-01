@@ -6,7 +6,7 @@ public class ShopManager : MonoBehaviour
     public List<GameObject> availableCards;      // Store all available card prefabs
     public Transform shopBar;                    // Parent transform for cards displayed in the shop (shop area)
     public int shopSlots = 5;                    // Number of slots available in the shop for display
-
+    
     private List<GameObject> currentShopCards = new List<GameObject>(); // Current items generated in the shop
 
     private void OnEnable()
@@ -58,7 +58,9 @@ public class ShopManager : MonoBehaviour
             // Set the position of the instance (adjust layout as needed)
             cardInstance.transform.localPosition = new Vector3(i * 1.0f-4, 0.5f, 0f);
             cardInstance.transform.rotation = this.transform.rotation;
-
+            // cardInstance.transform.rotation.y = 
+            cardInstance.transform.localScale = new Vector3(cardInstance.transform.lossyScale.x * 0.25f, cardInstance.transform.lossyScale.y * 0.25f, cardInstance.transform.lossyScale.z * 0.25f);
+            cardInstance.CardController = this.GetComponent<CardController>();
             // Add to the current shop list
             currentShopCards.Add(cardInstance);
         }
