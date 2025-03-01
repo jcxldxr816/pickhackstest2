@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class ShopManager : MonoBehaviour
 {
     public List<GameObject> availableCards;      // Store all available card prefabs
-    public List<GameObject> availableTroops;     // Store all available troop prefabs
     public Transform shopBar;                    // Parent transform for cards displayed in the shop (shop area)
     public int shopSlots = 5;                    // Number of slots available in the shop for display
 
@@ -57,7 +56,8 @@ public class ShopManager : MonoBehaviour
                 GameObject cardInstance = Instantiate(cardPrefab, shopBar);
 
                 // Set the position of the instance (adjust layout as needed)
-                cardInstance.transform.localPosition = new Vector3(-6 + i * 1.0f, 3.59f, -1);
+                cardInstance.transform.localPosition = new Vector3(i * 1.0f-4,0.2f,0f);
+                cardInstance.transform.rotation = this.transform.rotation;
 
                 // Add to the current shop list
                 currentShopCards.Add(cardInstance);
