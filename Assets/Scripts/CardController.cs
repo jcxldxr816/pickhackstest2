@@ -49,19 +49,19 @@ public class CardController : MonoBehaviour
         if (cardType == "modifier")
         {
            
-            Tooltip.GetComponent<Renderer>().material = Resources.Load("ModifierMaterial.mat", typeof(Material)) as Material;
+            Tooltip.GetComponent<Renderer>().material = Resources.Load<Material>("ModifierMaterial");
             MouseOverColor = Color.blue;
              modifier = new ModifierCard(cardName,cardDesc,true);
         }
         if (cardType == "offense")
         {
-             Tooltip.GetComponent<Renderer>().material = Resources.Load("OffenseMaterial.mat", typeof(Material)) as Material;
+             Tooltip.GetComponent<Renderer>().material = Resources.Load<Material>("OffenseMaterial");
             MouseOverColor = Color.red;
              offense = new OffenseCard(cardName,cardDesc,damage,health,true);
         }
         if (cardType == "support")
         {
-             Tooltip.GetComponent<Renderer>().material = Resources.Load("SupportMaterial.mat", typeof(Material)) as Material;
+             Tooltip.GetComponent<Renderer>().material = Resources.Load<Material>("SupportMaterial");
             MouseOverColor = Color.green;
             support = new SupportCard(cardName,cardDesc,health,true);
         }
@@ -71,6 +71,7 @@ public class CardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Tooltip.transform.position = transform.position + new Vector3(0,-5.0f,0);
+        TooltipText.transform.position = transform.position + new Vector3(0,-5f,0);
     }
 }
