@@ -32,13 +32,11 @@ public class OffenseCard : Card
 
 public class SupportCard : Card
 {
-    public string Behavior { get; private set; }
     public int Health { get; private set; }
-    public SupportCard(string name, string description, int health, string behavior, bool playerOwned) 
+    public SupportCard(string name, string description, int health, bool playerOwned) 
         : base(name, description, CardType.Support, playerOwned)
     {
         Health = health;
-        Behavior = behavior;
     }
 }
 
@@ -47,5 +45,6 @@ public class ModifierCard : Card
 
     public ModifierCard(string name, string description, bool playerOwned) 
         : base(name, description, CardType.Modifier, playerOwned)
-    {}
+    {
+    }
 }
