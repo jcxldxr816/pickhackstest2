@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections;
-//using System;
 using System.IO;
 
-public class CardControl : MonoBehaviour
+public class ModifierScript : MonoBehaviour
 {
-    //Highlight Variables
+   //Highlight Variables
     private Material material;    
     private Color MouseOverColor = Color.white;
     public float brightness = 0.5f;
