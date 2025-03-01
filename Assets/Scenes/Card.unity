@@ -464,6 +464,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6424052448425275260, guid: 49ef75c9d4c44954e91b7dcd15f15d94, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ca5552433bce6846ac8e7956e983870, type: 2}
+    - target: {fileID: 7126231188263583917, guid: 49ef75c9d4c44954e91b7dcd15f15d94, type: 3}
+      propertyPath: isPlayerOwned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7199499436224718035, guid: 49ef75c9d4c44954e91b7dcd15f15d94, type: 3}
       propertyPath: m_Name
       value: Card
