@@ -35,7 +35,7 @@ public class ShopManager : MonoBehaviour
         for (int i = currentShopCards.Count - 1; i >= 0; i--)
         {
             GameObject card = currentShopCards[i];
-            Card cardScript = card.GetComponent<Card>();
+            Phases cardScript = card.GetComponent<Phases>();
 
             if (cardScript != null && !cardScript.inField) // Check the inField status
             {
