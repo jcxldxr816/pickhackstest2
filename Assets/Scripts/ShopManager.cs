@@ -46,22 +46,22 @@ public class ShopManager : MonoBehaviour
         currentShopCards.Clear();
 
         
-            for (int i = 0; i < shopSlots; i++)
-            {
-                // Randomly select a card from the list of available cards
-                int randomIndex = Random.Range(0, availableCards.Count);
-                GameObject cardPrefab = availableCards[randomIndex];
+        for (int i = 0; i < shopSlots; i++)
+        {
+            // Randomly select a card from the list of available cards
+            int randomIndex = Random.Range(0, availableCards.Count);
+            GameObject cardPrefab = availableCards[randomIndex];
 
-                // Instantiate the card under the shopBar (as its child)
-                GameObject cardInstance = Instantiate(cardPrefab, shopBar);
+            // Instantiate the card under the shopBar (as its child)
+            GameObject cardInstance = Instantiate(cardPrefab, shopBar);
 
-                // Set the position of the instance (adjust layout as needed)
-                cardInstance.transform.localPosition = new Vector3(i * 1.0f-4,0.2f,0f);
-                cardInstance.transform.rotation = this.transform.rotation;
+            // Set the position of the instance (adjust layout as needed)
+            cardInstance.transform.localPosition = new Vector3(i * 1.0f-4, 0.5f, 0f);
+            cardInstance.transform.rotation = this.transform.rotation;
 
-                // Add to the current shop list
-                currentShopCards.Add(cardInstance);
-            }
+            // Add to the current shop list
+            currentShopCards.Add(cardInstance);
+        }
         
         
         

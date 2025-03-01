@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // For testing: Trigger phase events using keyboard input
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            print("one pressed");
+            
             RoundStart(); // Trigger RoundStart phase event
         }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             RoundBattle(); // Trigger RoundBattle phase event
         }
