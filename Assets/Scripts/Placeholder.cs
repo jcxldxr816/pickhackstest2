@@ -2,31 +2,38 @@ using UnityEngine;
 
 public class Placeholder : MonoBehaviour
 {
-    public bool isOccupied = false; // 是否已被放置卡牌
+    public bool isOccupied = false; // Indicates whether this placeholder is occupied by a card
+    public Card currentCard = null; // The Card object currently occupying this Placeholder
 
     private void OnMouseDown()
     {
-        // 确保有选中的卡片，并且此 Placeholder 未被占用
-        if (cardGenerator.selectedCard != null && !isOccupied)
+        // Ensure a card is selected and this Placeholder is not occupied
+        if (Card.selectedCard != null && this.isOccupied == false)
         {
-            // 获取当前选中的卡片
-            GameObject card = cardGenerator.selectedCard;
-            cardGenerator cardScript = card.GetComponent<cardGenerator>();
+            // Get the currently selected card
+            GameObject card = Card.selectedCard;
+            Card cardScript = card.GetComponent<Card>();
 
-            // 如果卡片当前已经在一个 Placeholder 上，先解除原 Placeholder 的占用
+            // If the card is already on another Placeholder, clear the original Placeholder's occupancy
             if (cardScript.currentPlaceholder != null)
             {
-                cardScript.currentPlaceholder.isOccupied = false;
-                Debug.Log($"Placeholder {cardScript.currentPlaceholder.gameObject.name} is now unoccupied.");
+                Placeholder oldPlaceholder = cardScript.currentPlaceholder;
+                oldPlaceholder.isOccupied = false;
+                oldPlaceholder.currentCard = null; // Clear the original placeholder's Card
+                Debug.Log($"Placeholder {oldPlaceholder.gameObject.name} is now unoccupied.");
             }
 
-            // 更新卡片的位置到当前 Placeholder
-            card.transform.position = transform.position; // 移动卡片到当前 Placeholder 的位置
-            cardScript.currentPlaceholder = this; // 更新卡片所在的 Placeholder
-            isOccupied = true; // 标记当前 Placeholder 为已占用
+            // Update the card's position to the current Placeholder
+            card.transform.position =new Vector3( transform.position.x,0.2f, transform.position.z); // Move the card to the position of this Placeholder
+            
+            cardScript.currentPlaceholder = this; // Update the Placeholder reference in the card
 
-            // 清空选中状态
-            cardGenerator.selectedCard = null;
+            isOccupied = true; // Mark the current Placeholder as occupied
+            currentCard = cardScript; // Set the current Placeholder's Card
+            currentCard.inField = true; // Mark the card as being on the field
+            // Clear the selected card state
+            Card.selectedCard = null;
+
             Debug.Log($"Card moved to Placeholder {gameObject.name}.");
         }
         else
@@ -34,16 +41,19 @@ public class Placeholder : MonoBehaviour
             Debug.Log("Cannot place card: Placeholder is occupied or no card is selected.");
         }
     }
+
     private void OnMouseEnter()
     {
-        if (cardGenerator.selectedCard != null && !isOccupied)
+        // Highlight the placeholder: show green if it can accept a card
+        if (Card.selectedCard != null && !isOccupied)
         {
-            GetComponent<Renderer>().material.color = Color.green; // 高亮可用占位符
+            GetComponent<Renderer>().material.color = Color.green; // Highlight available placeholder
         }
     }
 
     private void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = Color.white; // 还原颜色
+        // Remove highlight
+        GetComponent<Renderer>().material.color = Color.white; // Reset the color
     }
 }
