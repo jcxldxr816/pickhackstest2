@@ -1,29 +1,36 @@
 using UnityEngine;
 using System.Collections;
+//using System;
+using System.IO;
 
 public class CardControl : MonoBehaviour
 {
-
+    //Highlight Variables
     private Material material;    
-    public Color MouseOverColor = Color.white;
-    public float brightness = 2.0f;
+    private Color MouseOverColor = Color.white;
+    public float brightness = 0.5f;
+    public string cardName;
+    public string cardDesc;
     Color OriginalColor;
-    MeshRenderer renderer;
     void OnMouseOver()
     {
+        //Highlight card
         material.SetColor("_EmissionColor", MouseOverColor * brightness);
     }
     void OnMouseExit()
     {
+        //Unhighlight
         material.SetColor("_EmissionColor", OriginalColor);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Setup highlight card on mouseover
         material = GetComponent<Renderer>().material;
         OriginalColor = material.GetColor("_EmissionColor");
-        MouseOverColor.a = 0.5f;
+
     }
+
 
     // Update is called once per frame
     void Update()
