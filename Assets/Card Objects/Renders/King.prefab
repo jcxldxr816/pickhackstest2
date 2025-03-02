@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5451275297302017687}
   - component: {fileID: -8323712740429763945}
   m_Layer: 0
-  m_Name: Beehive
+  m_Name: King
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3032f5d63bca9474ca8daff3e17ea28f, type: 2}
+  - {fileID: 2100000, guid: 9c97bd701e17ec641af17fe2701dad1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,8 +127,8 @@ MonoBehaviour:
   activated: 0
   inField: 0
   state: 0
-  HP: 8
-  Damage: 1
+  HP: 6
+  Damage: 3
   cardType: 1
   cost: 0
 --- !u!114 &-8323712740429763945
@@ -145,8 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 3413154082919808173}
   Tooltip: {fileID: 2488279979662877173}
-  cardName: Beehive
-  cardDesc: 1 ATK / 8 HP
+  cardName: King
+  cardDesc: 3 ATK / 6 HP
   cardType: offense
   isPlayerOwned: 1
   health: 0
