@@ -3,12 +3,25 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
+    public static ShopManager Instance {get; private set;}
     public List<GameObject> availableCards;      // Store all available card prefabs
     public Transform shopBar;                    // Parent transform for cards displayed in the shop (shop area)
     public int shopSlots = 5;                    // Number of slots available in the shop for display
     
     private List<GameObject> currentShopCards = new List<GameObject>(); // Current items generated in the shop
 
+private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this; //Instantiate GameManager obj
+            DontDestroyOnLoad(gameObject); //Keep it around
+        }
+        else
+        {
+            Destroy(gameObject); //Don't allow clones
+        }
+    }
     private void OnEnable()
     {
         // Subscribe to GameManager events
@@ -29,7 +42,7 @@ public class ShopManager : MonoBehaviour
     }
 
     // Randomly generate cards or troops for the shop
-    public void RefreshShop(int phase)
+    public void RefreshShop()
     {
         // Clear existing shop content, skipping those that are already "inField"
         for (int i = currentShopCards.Count - 1; i >= 0; i--)
@@ -67,7 +80,7 @@ public class ShopManager : MonoBehaviour
             currentShopCards.Add(cardInstance);
         }
         
-        
+        StateButtons.Instance.SetBattleButton();
         
     }
 
@@ -75,7 +88,7 @@ public class ShopManager : MonoBehaviour
     public void OnRoundPlan()
     {
         Debug.Log("Shop Refreshing for Round Start");
-        RefreshShop(1); // Refresh shop, showing cards
+        //RefreshShop(1); // Refresh shop, showing cards
     }
 
     // Respond to the `OnRoundShop2` event

@@ -10,7 +10,7 @@ public class Phases : MonoBehaviour
     public bool inField = false;
 
     public string cardName = "";
-    public int state = 0; // 0: in shop, 1: off battle, 2: in battle
+    //public int state = 0; // 0: in shop, 1: off battle, 2: in battle
     public int HP = 0;
     public int Damage = 0;
     public int cardType;//defence 0,attack1
@@ -67,7 +67,7 @@ public class Phases : MonoBehaviour
         {
             Debug.Log($"Card {gameObject.name} is still in shop during OnRoundPlan.");
             // Perform any logic, such as resetting state or preparing for refresh
-            state = 1; // Still in the shop
+            //state = 1; // Still in the shop
         }
         else
         {
@@ -77,9 +77,9 @@ public class Phases : MonoBehaviour
     }
 
 
-    private void OnRoundBattle()
+    public void OnRoundBattle()
     {
-        state = 2; // Set state to "in battle"
+        //state = 2; // Set state to "in battle"
 
         int currentRow = 1; //Start on player's offense card row
         int oppositeOffenseRow = 2;
@@ -91,7 +91,8 @@ public class Phases : MonoBehaviour
         oppositeSupportRow = 0;
         playerTurn = true;
         CalculateDamage(currentRow, oppositeOffenseRow, oppositeSupportRow, playerTurn);
-        GameManager.Instance.BattleEnded();
+        StateButtons.Instance.SetSleepButton();
+
     }
     public void CalculateDamage(int currentRow, int oppositeOffenseRow, int oppositeSupportRow, bool playerTurn)
         {

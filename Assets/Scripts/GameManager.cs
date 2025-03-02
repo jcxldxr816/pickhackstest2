@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public static int opponentHealth;
     public TextMeshPro yourHP;
     public TextMeshPro opponentHP;
-    public ShopManager shopManager;
     public TextMeshPro goldText;
 
      private void Awake()
@@ -58,6 +57,7 @@ public class GameManager : MonoBehaviour
         opponentHP = obj.GetComponent<TextMeshPro>();
         obj = GameObject.Find("GoldText");
         goldText = obj.GetComponent<TextMeshPro>();
+        opponentTurn();
     }
     public void TakeDamage(int incomingDamage, bool playerTurn)
     {
@@ -91,13 +91,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Opponent Killed!");
     }
-    public void SleepStage()
+    /*public void SleepStage()
     {
         Debug.Log("Entering Sleep Phase");
         state = 0; // Set state to Sleep
         opponentTurn();
         OnRoundSleep?.Invoke(); // Trigger OnRoundSleep event
-    }
+    }*/
     public void PlanStage()
     {
         Debug.Log("Round Start, Entering Plan Phase");
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         {
             print("one pressed");
             
-            SleepStage(); // Trigger RoundStart phase event
+            //SleepStage(); // Trigger RoundStart phase event
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -167,6 +167,8 @@ public class GameManager : MonoBehaviour
 
     public void opponentTurn()
     {
+        Debug.Log("Running Opponent Turn");
+        /*
         List<GameObject> selectedCards = new List<GameObject>();
         
         for (int i = 0; i < 5; i++) //pick 5 random cards (duplicates allowed)
@@ -201,7 +203,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        shopManager.RefreshShop(1);
+        */
+        ShopManager.Instance.RefreshShop();
     }
     
 }
