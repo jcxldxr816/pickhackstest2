@@ -1,26 +1,27 @@
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+//using static UnityEngine.Rendering.DebugUI;
 
-public static class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance {get; private set}
+    public static GameManager Instance {get; private set;}
     public int gold;   // Player's gold
     public int wave;   // Current wave number
     public int phase;  // Current phase: 0-Hero, 1-Shop1, 2-Shop2, 3-Battle
     public int playerHealth;
     public int opponentHealth;
-    private void InstanceManager()
+     private void Awake()
     {
         if (Instance == null)
         {
-            Instance = this;  // Set the instance to this GameManager
-            DontDestroyOnLoad(gameObject); // Ensures it persists across scenes
+            Instance = this;  // Assign the instance
+            DontDestroyOnLoad(gameObject); // Make it persistent
         }
         else
         {
-            Destroy(gameObject); // Prevent duplicate GameManager instances
+            Destroy(gameObject); // Destroy duplicate GameManagers
         }
     }
+
     public void ReSet()
     {
         phase = 0;
@@ -38,21 +39,29 @@ public static class GameManager : MonoBehaviour
     {
         ReSet();
     }
-    public void opponentTakeDamage(int incomingDamage)
+    public void TakeDamage(int incomingDamage, bool playerTurn)
     {
-        opponentHealth -= incomingDamage;
-        if (opponentHealth <=0)
+        if (incomingDamage < 0)
         {
-            defeatOpponent();
+            incomingDamage = -(incomingDamage);
         }
-    }
-    public void playerTakeDamage(int incomingDamage)
-    {
+        if (playerTurn == true) //If opponent's turn, deal damage to player
+        {
         playerHealth -= incomingDamage;
         if (playerHealth <= 0)
         {
             gameOver();
         }
+        else
+        {
+            opponentHealth -= incomingDamage;
+            if(opponentHealth <=0)
+            {
+                defeatOpponent();
+            }
+        }
+        }
+
     }
     public void gameOver()
     {

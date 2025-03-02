@@ -26,7 +26,7 @@ public class Phases : MonoBehaviour
     {
         // Unsubscribe from events to prevent memory leaks or invalid calls
         GameManager.OnRoundStart -= OnRoundStart;
-        GameManager.OnRoundBattle += OnRoundBattle;
+        GameManager.OnRoundBattle -= OnRoundBattle;
     }
 
     private void OnMouseDown()
@@ -82,47 +82,51 @@ public class Phases : MonoBehaviour
         int currentRow = 1; //Start on player's offense card row
         int oppositeOffenseRow = 2;
         int oppositeSupportRow = 3;
-        bool turn = 0; //0 for player's turn, 1 for opponent's turn
-        public void CalculateDamage(int currentRow, int oppositeOffenseRow, int oppositeSupportRow)
+        bool playerTurn = false; //false for player's turn, true for opponent's turn
+        CalculateDamage(currentRow, oppositeOffenseRow, oppositeSupportRow, playerTurn);
+        currentRow = 2;
+        oppositeOffenseRow = 1;
+        oppositeSupportRow = 0;
+        playerTurn = true;
+        CalculateDamage(currentRow, oppositeOffenseRow, oppositeSupportRow, playerTurn);
+        
+
+    }
+    public void CalculateDamage(int currentRow, int oppositeOffenseRow, int oppositeSupportRow, bool playerTurn)
         {
         for (int col = 0; col <=4; col++)
         {
-            if (Card2DArray[currentRow,col] != "empty")
+            if (Card2DArray[currentRow,col] != null)
             {
             int damageDealt = Card2DArray[currentRow,col].Damage;
-            if (Card2DArray[oppositeOffenseRow,col] != "empty") //If opponent has offense card in this lane
+            if (Card2DArray[oppositeOffenseRow,col] != null) //If opponent has offense card in this lane
             {
                 Card2DArray[oppositeOffenseRow,col].HP -= damageDealt; //Damage opponent's offense card
                 if (Card2DArray[oppositeOffenseRow,col].HP <= 0) //If opponent's offense card dies
                 {
                     RemoveCardFromArray(oppositeOffenseRow, col); //Destroy opponent's offense card
-                    if (Card2DArray[oppositeSupportRow,col] != "empty") //If opponent has support card
+                    if (Card2DArray[oppositeSupportRow,col] != null) //If opponent has support card
                     {
-                    Card2DArray[oppositeSupportRow,col].HP += Card2DArray[row+1,col].HP; //Overflow damage to suport card
+                    Card2DArray[oppositeSupportRow,col].HP += Card2DArray[oppositeOffenseRow,col].HP; //Overflow damage to suport card
                     if (Card2DArray[oppositeSupportRow,col].HP <= 0) //If opponent's support card dies
                     {
                         RemoveCardFromArray(oppositeSupportRow, col); //Destroy opponent's support card
-                        GameManager.Instance.opponentTakeDamage(Card2DArray[oppositeSupportRow,col].HP); //Overflow damage to player
+                        GameManager.Instance.TakeDamage(-(Card2DArray[oppositeSupportRow,col].HP), playerTurn); //Overflow damage to player
                     }
                     }
                     else
                     {
-                        GameManager.Instance.opponentTakeDamage(Card2DArray[oppositeOffenseRow,col].HP);
+                        GameManager.Instance.TakeDamage(-(Card2DArray[oppositeOffenseRow,col].HP), playerTurn);
                     }
                 }
             }
             else
             {
-                GameManager.Instance.opponentTakeDamage(damageDealt); //Attack opponent directly if no card in lane
+                GameManager.Instance.TakeDamage(damageDealt, playerTurn); //Attack directly if no card in lane
             }
             }
         }
         }
-        row = 2;
-
-        
-
-    }
 
 
 
