@@ -1,3 +1,6 @@
+# Cardomancy
+## Lane-based card combat
+
 ## Inspiration
 We were inspired by virtual card games like Inscryption, Balatro, Slay the Spire, Teamfight Tactics, and Hearthstone.
 ## How we built it
