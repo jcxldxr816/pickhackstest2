@@ -1,51 +1,52 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Placeholder : MonoBehaviour
 {
-    public bool isOccupied = false; // ±íÊ¾´ËÕ¼Î»·ûÊÇ·ñ±»¿¨ÅÆÕ¼ÓÃ
-    public Phases currentCard = null; // µ±Ç°Õ¼ÓÃ´ËÕ¼Î»·ûµÄ¿¨ÅÆ¶ÔÏó
-    public int line; // ÐÐºÅ
-    public int row; // ÁÐºÅ
-    public bool isEnemy = false; // ÊÇ·ñÊÇµÐÈËµÄÕ¼Î»·û
+    public bool isOccupied = false; // ï¿½ï¿½Ê¾ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½Ç·ñ±»¿ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½
+    public Phases currentCard = null; // ï¿½ï¿½Ç°Õ¼ï¿½Ã´ï¿½Õ¼Î»ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
+    public int line; // ï¿½Ðºï¿½
+    public int row; // ï¿½Ðºï¿½
+    public bool isEnemy = false; // ï¿½Ç·ï¿½ï¿½Çµï¿½ï¿½Ëµï¿½Õ¼Î»ï¿½ï¿½
 
     private void OnMouseDown()
     {
-        // È·±£ÓÐ¿¨ÅÆ±»Ñ¡ÖÐ£¬²¢ÇÒµ±Ç°Õ¼Î»·ûÎ´±»Õ¼ÓÃ
+        // È·ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Æ±ï¿½Ñ¡ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Òµï¿½Ç°Õ¼Î»ï¿½ï¿½Î´ï¿½ï¿½Õ¼ï¿½ï¿½
         if (Phases.selectedCard != null && !this.isOccupied)
         {
-            // »ñÈ¡µ±Ç°Ñ¡ÖÐµÄ¿¨ÅÆ
+            // ï¿½ï¿½È¡ï¿½ï¿½Ç°Ñ¡ï¿½ÐµÄ¿ï¿½ï¿½ï¿½
             GameObject card = Phases.selectedCard;
             Phases cardScript = card.GetComponent<Phases>();
 
-            // Èç¹û¿¨ÅÆÒÑ¾­ÔÚÁíÒ»¸öÕ¼Î»·ûÉÏ£¬½«Ô­Õ¼Î»·ûµÄ×´Ì¬Çå¿Õ£¬²¢´ÓÊý×éÖÐÉ¾³ý
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½Ô­Õ¼Î»ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
             if (cardScript.currentPlaceholder != null)
             {
                 Placeholder oldPlaceholder = cardScript.currentPlaceholder;
 
-                // ´Ó Card2DArray ÒÆ³ý¾ÉµÄ¿¨ÅÆÒýÓÃ
+                // ï¿½ï¿½ Card2DArray ï¿½Æ³ï¿½ï¿½ÉµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 Phases.RemoveCardFromArray(oldPlaceholder.line, oldPlaceholder.row);
 
-                // Çå¿Õ¾ÉÕ¼Î»·ûµÄ×´Ì¬
+                // ï¿½ï¿½Õ¾ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½×´Ì¬
                 oldPlaceholder.isOccupied = false;
                 oldPlaceholder.currentCard = null;
                 Debug.Log($"Placeholder {oldPlaceholder.gameObject.name} at ({oldPlaceholder.line}, {oldPlaceholder.row}) is now unoccupied.");
             }
 
-            // ½«¿¨ÅÆÒÆ¶¯µ½µ±Ç°Õ¼Î»·ûµÄÎ»ÖÃ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Õ¼Î»ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
             card.transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
 
-            // ¸üÐÂ¿¨ÅÆºÍÕ¼Î»·ûÖ®¼äµÄ¹ØÁª
+            // ï¿½ï¿½ï¿½Â¿ï¿½ï¿½Æºï¿½Õ¼Î»ï¿½ï¿½Ö®ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½
             cardScript.currentPlaceholder = this;
             this.isOccupied = true;
             this.currentCard = cardScript;
 
-            // ¸üÐÂ¿¨ÅÆµÄÊôÐÔ
-            cardScript.inField = true; // ±ê¼Ç¿¨ÅÆ´¦ÓÚÕ½³¡ÖÐ
+            // ï¿½ï¿½ï¿½Â¿ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½
+            cardScript.inField = true; // ï¿½ï¿½Ç¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½
 
-            // ½«¿¨ÅÆÌí¼Óµ½ Phases µÄ¾²Ì¬¶þÎ¬Êý×éÖÐ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ Phases ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Phases.AddCardToArray(cardScript, this.line, this.row);
 
-            // Çå³ýÒÑÑ¡ÖÐµÄ¿¨ÅÆ×´Ì¬
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ÐµÄ¿ï¿½ï¿½ï¿½×´Ì¬
             Phases.selectedCard = null;
 
             Debug.Log($"Phases {card.name} moved to Placeholder {gameObject.name} at ({line}, {row}).");
@@ -58,16 +59,16 @@ public class Placeholder : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        // ¸ßÁÁÏÔÊ¾Õ¼Î»·û£ºÈç¹û¿ÉÒÔ·ÅÖÃ¿¨ÅÆ£¬ÏÔÊ¾ÂÌÉ«
-        if (Phases.selectedCard != null && !isOccupied)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Õ¼Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Ã¿ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½É«
+        if (Phases.selectedCard != null && !isOccupied && SceneManager.GetActiveScene().name != "MainMenu")
         {
-            GetComponent<Renderer>().material.color = Color.green; // ¸ßÁÁÏÔÊ¾¿É·ÅÖÃµÄÕ¼Î»·û
+            GetComponent<Renderer>().material.color = Color.green; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½É·ï¿½ï¿½Ãµï¿½Õ¼Î»ï¿½ï¿½
         }
     }
 
     private void OnMouseExit()
     {
-        // ÒÆ³ý¸ßÁÁ
-        GetComponent<Renderer>().material.color = Color.white; // »Ö¸´ÑÕÉ«
+        // ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½
+        GetComponent<Renderer>().material.color = Color.white; // ï¿½Ö¸ï¿½ï¿½ï¿½É«
     }
 }
