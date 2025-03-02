@@ -1,17 +1,33 @@
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class GameManager : MonoBehaviour
+public static class GameManager : MonoBehaviour
 {
+    public static GameManager Instance {get; private set}
     public int gold;   // Player's gold
     public int wave;   // Current wave number
     public int phase;  // Current phase: 0-Hero, 1-Shop1, 2-Shop2, 3-Battle
-
+    public int playerHealth;
+    public int opponentHealth;
+    private void InstanceManager()
+    {
+        if (Instance == null)
+        {
+            Instance = this;  // Set the instance to this GameManager
+            DontDestroyOnLoad(gameObject); // Ensures it persists across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Prevent duplicate GameManager instances
+        }
+    }
     public void ReSet()
     {
         phase = 0;
         gold = 0;
         wave = 0;
+        playerHealth = 10;
+        opponentHealth = 10;
     }
 
     // Define events
@@ -21,6 +37,30 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         ReSet();
+    }
+    public void opponentTakeDamage(int incomingDamage)
+    {
+        opponentHealth -= incomingDamage;
+        if (opponentHealth <=0)
+        {
+            defeatOpponent();
+        }
+    }
+    public void playerTakeDamage(int incomingDamage)
+    {
+        playerHealth -= incomingDamage;
+        if (playerHealth <= 0)
+        {
+            gameOver();
+        }
+    }
+    public void gameOver()
+    {
+        Debug.Log("Game Over!!");
+    }
+    public void defeatOpponent()
+    {
+        Debug.Log("Opponent Killed!");
     }
     public void RoundStart()
     {

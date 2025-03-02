@@ -4,7 +4,7 @@ public abstract class Card
 {
     public string Name { get; private set; }
     public string Description { get; private set; }
-    public enum CardType { Offense, Support, Modifier }
+    public enum CardType { Offense, Support, Modifier, Commander }
     public CardType Type { get; protected set; }
     public bool isPlayerOwned {get; private set;}
 
@@ -38,6 +38,14 @@ public class SupportCard : Card
     {
         Health = health;
     }
+    public void takeDamage(int incomingDamage)
+    {
+        Health -= incomingDamage;
+        if (Health <=0)
+        {
+            
+        }
+    }
 }
 
 public class ModifierCard : Card
@@ -46,5 +54,27 @@ public class ModifierCard : Card
     public ModifierCard(string name, string description, bool playerOwned) 
         : base(name, description, CardType.Modifier, playerOwned)
     {
+
+    }
+    public void modifyAction()
+    {
+        switch(Name)
+        {
+            case "Coin":
+            Debug.Log("coin!!");
+            break;
+            default:
+            Debug.Log("Could not find a name to execute action!");
+            break;
+        }
+    }
+}
+
+public class CommanderCard : Card
+{
+    public CommanderCard(string name, string description, bool playerOwned)
+    : base(name, description, CardType.Commander, playerOwned)
+    {
+
     }
 }
