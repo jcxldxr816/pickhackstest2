@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Define events
     public delegate void RoundHandler();
     public static event RoundHandler OnRoundSleep;
+    public static event RoundHandler OnRoundSleepEnd;
     public static event RoundHandler OnRoundPlan;
     public static event RoundHandler OnRoundPlanEnd;
     public static event RoundHandler OnRoundBattle;
@@ -137,9 +138,9 @@ public class GameManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, allCards.Count);
             GameObject chosenCard = allCards[randomIndex];
-            Instantiate(chosenCard);
-            chosenCard.SetActive(false); //making sure selected card will not be visible
-            selectedCards.Add(chosenCard);
+            GameObject newCard = Instantiate(chosenCard);
+            newCard.SetActive(false); //making sure selected card will not be visible
+            selectedCards.Add(newCard);
         }
 
         foreach (var card in selectedCards)
@@ -150,7 +151,7 @@ public class GameManager : MonoBehaviour
                 if (Phases.GetCardFromArray(3, lane) == null)
                 {
                     Phases.AddCardToArray(card.GetComponent<Phases>(), 3, lane);
-                    card.GetComponent<Phases>().transform.position = card.GetComponent<Phases>().currentPlaceholder.transform.position; //issue
+                    card.GetComponent<Phases>().transform.position = card.GetComponent<Phases>().currentPlaceholder.transform.position; //issue?
                     card.SetActive(true);
                 }
             }
