@@ -98,6 +98,9 @@ public class GameManager : MonoBehaviour
         stage = 3; // Set stage to Battle
         OnRoundBattle?.Invoke(); // Trigger OnRoundBattle event
         //Do battle stuff
+    }
+    public void BattleEnded()
+    {
         OnRoundBattleEnd?.Invoke();
     }
 

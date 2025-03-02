@@ -91,8 +91,7 @@ public class Phases : MonoBehaviour
         oppositeSupportRow = 0;
         playerTurn = true;
         CalculateDamage(currentRow, oppositeOffenseRow, oppositeSupportRow, playerTurn);
-        
-
+        GameManager.Instance.BattleEnded();
     }
     public void CalculateDamage(int currentRow, int oppositeOffenseRow, int oppositeSupportRow, bool playerTurn)
         {
