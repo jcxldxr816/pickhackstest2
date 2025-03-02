@@ -11,12 +11,12 @@ public class Placeholder : MonoBehaviour
 
     private void OnMouseDown()
     {
+        GameObject card = Phases.selectedCard;
+            Phases cardScript = card.GetComponent<Phases>();
         // ȷ���п��Ʊ�ѡ�У����ҵ�ǰռλ��δ��ռ��
-        if (Phases.selectedCard != null && !this.isOccupied)
+        if (Phases.selectedCard != null && !this.isOccupied&&cardScript.inField==false&&cardScript.cardType==row)
         {
             // ��ȡ��ǰѡ�еĿ���
-            GameObject card = Phases.selectedCard;
-            Phases cardScript = card.GetComponent<Phases>();
 
             // ��������Ѿ�����һ��ռλ���ϣ���ԭռλ����״̬��գ�����������ɾ��
             if (cardScript.currentPlaceholder != null)

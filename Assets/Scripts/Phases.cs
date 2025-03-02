@@ -12,7 +12,7 @@ public class Phases : MonoBehaviour
     public int state = 0; // 0: in shop, 1: off battle, 2: in battle
     public int HP = 0;
     public int Damage = 0;
-    public string CardType = "empty";
+    public int cardType;//defence 0,attack1
     public int cost;
 
     private void OnEnable()
@@ -32,6 +32,7 @@ public class Phases : MonoBehaviour
     private void OnMouseDown()
     {
         // If there is no selected card, select this card
+        
         if (selectedCard == null)
         {
             selectedCard = this.gameObject;

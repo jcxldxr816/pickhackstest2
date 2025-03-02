@@ -1781,6 +1781,10 @@ PrefabInstance:
       propertyPath: TooltipText
       value: 
       objectReference: {fileID: 141881379}
+    - target: {fileID: -5451275297302017687, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: CardType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 232461863213135321, guid: d920f88300e4df8488f10a60df313562, type: 3}
       propertyPath: m_Name
       value: Card

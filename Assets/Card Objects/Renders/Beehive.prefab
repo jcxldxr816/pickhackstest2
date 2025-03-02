@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5451275297302017687}
   - component: {fileID: -8323712740429763945}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Beehive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b0e60d694005fa4c952b8343de0e0c3, type: 2}
+  - {fileID: 2100000, guid: 3032f5d63bca9474ca8daff3e17ea28f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   state: 0
   HP: 0
   Damage: 0
-  CardType: empty
+  cardType: 0
   cost: 0
 --- !u!114 &-8323712740429763945
 MonoBehaviour:
@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1026a39da7490f4429fa970ba2fc049a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipText: {fileID: 0}
-  Tooltip: {fileID: 0}
+  TooltipText: {fileID: 3413154082919808173}
+  Tooltip: {fileID: 2488279979662877173}
   cardName: CARDNAME
   cardDesc: CARDDESCRIPTION
   cardType: modifier
