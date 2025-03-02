@@ -10,8 +10,8 @@ public class Phases : MonoBehaviour
     public bool inField = false;
 
     public int state = 0; // 0: in shop, 1: off battle, 2: in battle
-    public int HP;
-    public int Damage;
+    public int HP = 0;
+    public int Damage = 0;
     public string CardType = "empty";
     public int cost;
 

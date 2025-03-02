@@ -19,13 +19,13 @@ public abstract class Card
 
 public class OffenseCard : Card
 {
-    public int Damage { get; private set; }
+    public int brambage { get; private set; }
     public int Health { get; private set; }
 
-    public OffenseCard(string name, string description, int damage, int health, bool playerOwned) 
+    public OffenseCard(string name, string description, int brambage, int health, bool playerOwned) 
         : base(name, description, CardType.Offense, playerOwned)
     {
-        Damage = damage;
+        brambage = brambage;
         Health = health;
     }
 }
@@ -38,9 +38,9 @@ public class SupportCard : Card
     {
         Health = health;
     }
-    public void takeDamage(int incomingDamage)
+    public void takebrambage(int incomingbrambage)
     {
-        Health -= incomingDamage;
+        Health -= incomingbrambage;
         if (Health <=0)
         {
             

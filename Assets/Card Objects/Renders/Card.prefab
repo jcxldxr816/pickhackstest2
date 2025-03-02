@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1313482835577493517}
   - component: {fileID: 3506968699866550035}
   - component: {fileID: 7522085180666480303}
-  - component: {fileID: 5877611474814892104}
+  - component: {fileID: -5451275297302017687}
+  - component: {fileID: -8323712740429763945}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -110,7 +111,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5877611474814892104
+--- !u!114 &-5451275297302017687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232461863213135321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b15af9cdc94492eb0787c19293e124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlaceholder: {fileID: 0}
+  activated: 0
+  inField: 0
+  state: 0
+  HP: 0
+  Damage: 0
+  CardType: empty
+  cost: 0
+--- !u!114 &-8323712740429763945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,13 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1026a39da7490f4429fa970ba2fc049a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipText: {fileID: 3413154082919808173}
-  Tooltip: {fileID: 2488279979662877173}
+  TooltipText: {fileID: 0}
+  Tooltip: {fileID: 0}
   cardName: CARDNAME
   cardDesc: CARDDESCRIPTION
   cardType: modifier
+  isPlayerOwned: 1
   health: 0
-  damage: 0
+  brambage: 0
 --- !u!1 &745717556636583568
 GameObject:
   m_ObjectHideFlags: 0

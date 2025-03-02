@@ -12,13 +12,11 @@ public class CardController : MonoBehaviour
     public string cardName = "CARDNAME";
     public string cardDesc = "CARDDESCRIPTION";
     public string cardType = "modifier";
-    public ModifierCard modifier;
-    public OffenseCard offense;
-    public SupportCard support;
+
     public bool isPlayerOwned = true;
 
     public int health = 0;
-    public int damage = 0;
+    public int brambage = 0;
    //Highlight Variables
     private Material material;    
     private Color MouseOverColor = Color.white;
@@ -55,19 +53,19 @@ public class CardController : MonoBehaviour
            
             Tooltip.GetComponent<Renderer>().material = Resources.Load<Material>("ModifierMaterial");
             MouseOverColor = Color.blue;
-             modifier = new ModifierCard(cardName,cardDesc,isPlayerOwned);
+            // modifier = new ModifierCard(cardName,cardDesc,isPlayerOwned);
         }
         if (cardType == "offense")
         {
              Tooltip.GetComponent<Renderer>().material = Resources.Load<Material>("OffenseMaterial");
             MouseOverColor = Color.red;
-             offense = new OffenseCard(cardName,cardDesc,damage,health,isPlayerOwned);
+             //offense = new OffenseCard(cardName,cardDesc,brambage,health,isPlayerOwned);
         }
         if (cardType == "support")
         {
              Tooltip.GetComponent<Renderer>().material = Resources.Load<Material>("SupportMaterial");
             MouseOverColor = Color.green;
-            support = new SupportCard(cardName,cardDesc,health,isPlayerOwned);
+           // support = new SupportCard(cardName,cardDesc,health,isPlayerOwned);
         }
     }
 

@@ -60,7 +60,7 @@ public class ShopManager : MonoBehaviour
             cardInstance.transform.rotation = this.transform.rotation;
             // cardInstance.transform.rotation.y = 
             cardInstance.transform.localScale = new Vector3(cardInstance.transform.lossyScale.x * 0.25f, cardInstance.transform.lossyScale.y * 0.25f, cardInstance.transform.lossyScale.z * 0.25f);
-            cardInstance.CardController = this.GetComponent<CardController>();
+            //cardInstance.CardController = this.GetComponent<CardController>();
             // Add to the current shop list
             currentShopCards.Add(cardInstance);
         }
