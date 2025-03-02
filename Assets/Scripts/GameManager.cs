@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static int stage;  // Current phase: 1-Sleep, 2-Plan, 3-Battle
     public static int playerHealth;
     public static int opponentHealth;
+
      private void Awake()
     {
         if (Instance == null)
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
         {
             opponentTurn();
         }
+
     }
 
     public static void increaseGold(int amount)
@@ -169,7 +171,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        //TODO call onSleepEnd
+        PlanStage();
     }
     
 }
