@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     
     public static int gold;   // Player's gold
     public static int round;   // Current round number
-    public static int stage;  // Current phase: 1-Sleep, 2-Plan, 3-Battle
+    //0 = SleepStart, 1 = SleepEnd/PlanStart, 2 = PlanInProgress, 3= BattleStart, 4 = BattleEnd, -1 = Main Menu
+    public static int state;
     public static int playerHealth;
     public static int opponentHealth;
     public TextMeshPro yourHP;
     public TextMeshPro opponentHP;
+    public ShopManager shopManager;
 
      private void Awake()
     {
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public void ReSet()
     {
-        stage = 0;
+        state = 0;
         gold = 0;
         round = 0;
         playerHealth = 10;
@@ -89,21 +91,21 @@ public class GameManager : MonoBehaviour
     public void SleepStage()
     {
         Debug.Log("Entering Sleep Phase");
-        stage = 1; // Set stage to Sleep
+        state = 0; // Set state to Sleep
+        opponentTurn();
         OnRoundSleep?.Invoke(); // Trigger OnRoundSleep event
     }
     public void PlanStage()
     {
         Debug.Log("Round Start, Entering Plan Phase");
-        stage = 2; // Set stage to Plan
-        OnRoundPlan?.Invoke();
+        // Set state to Plan
         //Do stuff 
         OnRoundPlanEnd?.Invoke();
     }
     public void BattleStage()
     {
         Debug.Log("Round Start, Entering Battle Phase");
-        stage = 3; // Set stage to Battle
+        state = 3; // Set state to Battle
         OnRoundBattle?.Invoke(); // Trigger OnRoundBattle event
         //Do battle stuff
     }
@@ -181,7 +183,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        PlanStage();
+        shopManager.RefreshShop(1);
     }
     
 }

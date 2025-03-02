@@ -25,7 +25,7 @@ public class ShopManager : MonoBehaviour
 
     public void Start()
     {
-        RefreshShop(1); // Initialize the shop
+        //RefreshShop(1); // Initialize the shop
     }
 
     // Randomly generate cards or troops for the shop
@@ -82,5 +82,8 @@ public class ShopManager : MonoBehaviour
     public void OnRoundBattle()
     {
        
+    }
+    void Update()
+    {
     }
 }

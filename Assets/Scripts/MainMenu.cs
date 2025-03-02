@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
     public void playGame()
     {
         SceneManager.LoadScene("grid"); //TODO change this
+        GameManager.Instance.opponentTurn();
     }
 
     public void optionsMenu()

@@ -15,23 +15,24 @@ public class StateButtons : MonoBehaviour
     void Start()
     {
         button = transform.Find("PlayButton")?.GetComponent<Button>();
-        GameManager.OnRoundBattleEnd += SetSleepButton;
-        GameManager.OnRoundPlanEnd += SetBattleButton;
+        HideButton();
 
     }
-    private void OnDestroy()
+    
+    void HideButton()
     {
-        GameManager.OnRoundBattleEnd -= SetBattleButton;
-        GameManager.OnRoundSleepEnd -= SetSleepButton;
+        button.gameObject.SetActive(false);
     }
-    void SetSleepButton()
+    public void SetSleepButton()
     {
+        button.gameObject.SetActive(true);
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => GameManager.Instance.SleepStage());
         button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Continue";
     }
-    void SetBattleButton()
+    public void SetBattleButton()
     {
+        button.gameObject.SetActive(true);
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => GameManager.Instance.BattleStage());
         button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Fight!";
