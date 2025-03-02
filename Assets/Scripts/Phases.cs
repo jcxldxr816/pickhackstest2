@@ -99,24 +99,27 @@ public class Phases : MonoBehaviour
             if (Card2DArray[currentRow,col] != null)
             {
             int damageDealt = Card2DArray[currentRow,col].Damage;
+            
             if (Card2DArray[oppositeOffenseRow,col] != null) //If opponent has offense card in this lane
             {
                 Card2DArray[oppositeOffenseRow,col].HP -= damageDealt; //Damage opponent's offense card
                 if (Card2DArray[oppositeOffenseRow,col].HP <= 0) //If opponent's offense card dies
                 {
+                    int supportOverflowDamage = Card2DArray[oppositeOffenseRow,col].HP;
                     RemoveCardFromArray(oppositeOffenseRow, col); //Destroy opponent's offense card
                     if (Card2DArray[oppositeSupportRow,col] != null) //If opponent has support card
                     {
-                    Card2DArray[oppositeSupportRow,col].HP += Card2DArray[oppositeOffenseRow,col].HP; //Overflow damage to suport card
+                    Card2DArray[oppositeSupportRow,col].HP += supportOverflowDamage; //Overflow damage to suport card
                     if (Card2DArray[oppositeSupportRow,col].HP <= 0) //If opponent's support card dies
                     {
+                        int opponentOverflowDamage = Card2DArray[oppositeSupportRow,col].HP;
                         RemoveCardFromArray(oppositeSupportRow, col); //Destroy opponent's support card
-                        GameManager.Instance.TakeDamage(-(Card2DArray[oppositeSupportRow,col].HP), playerTurn); //Overflow damage to player
+                        GameManager.Instance.TakeDamage(opponentOverflowDamage, playerTurn); //Overflow damage to player
                     }
                     }
                     else
                     {
-                        GameManager.Instance.TakeDamage(-(Card2DArray[oppositeOffenseRow,col].HP), playerTurn);
+                        GameManager.Instance.TakeDamage(supportOverflowDamage, playerTurn);
                     }
                 }
             }
