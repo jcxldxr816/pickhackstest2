@@ -52,6 +52,11 @@ public class StateButtons : MonoBehaviour
         button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Fight!";
     }
 
+    public void Battle()
+    {
+        Phases phases = FindObjectOfType<Phases>();
+        phases.OnRoundBattle();
+    }
 
     // Update is called once per frame
     void Update()

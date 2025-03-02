@@ -13,11 +13,12 @@ public class Placeholder : MonoBehaviour
     {
         GameObject card = Phases.selectedCard;
             Phases cardScript = card.GetComponent<Phases>();
+            Debug.Log("Placeholder script activated");
         // ȷ���п��Ʊ�ѡ�У����ҵ�ǰռλ��δ��ռ��
         if (Phases.selectedCard != null && !this.isOccupied&&cardScript.inField==false&&cardScript.cardType==row)
         {
             // ��ȡ��ǰѡ�еĿ���
-
+            Debug.Log("Condition Check true");
             // ��������Ѿ�����һ��ռλ���ϣ���ԭռλ����״̬��գ�����������ɾ��
             if (cardScript.currentPlaceholder != null)
             {
@@ -34,6 +35,7 @@ public class Placeholder : MonoBehaviour
 
             // �������ƶ�����ǰռλ����λ��
             card.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Debug.Log("Moved Card!");
 
             // ���¿��ƺ�ռλ��֮��Ĺ���
             cardScript.currentPlaceholder = this;
@@ -59,6 +61,7 @@ public class Placeholder : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        Debug.Log("Mouse Entered Placeholder!");
         // ������ʾռλ����������Է��ÿ��ƣ���ʾ��ɫ
         if (Phases.selectedCard != null && !isOccupied)
         {
@@ -70,5 +73,10 @@ public class Placeholder : MonoBehaviour
     {
         // �Ƴ�����
         GetComponent<Renderer>().material.color = Color.white; // �ָ���ɫ
+    }
+
+    void OnStart()
+    {
+        OnMouseDown();
     }
 }
