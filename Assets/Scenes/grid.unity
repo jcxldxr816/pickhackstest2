@@ -169,7 +169,11 @@ MonoBehaviour:
   isOccupied: 0
   currentCard: {fileID: 0}
   line: 0
+<<<<<<< Updated upstream
   row: 1
+=======
+  row: 0
+>>>>>>> Stashed changes
   isEnemy: 0
 --- !u!64 &297090449
 MeshCollider:
@@ -545,6 +549,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &561823561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2488279979662877173, guid: d920f88300e4df8488f10a60df313562, type: 3}
+  m_PrefabInstance: {fileID: 1634446017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &825415352
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,9 +603,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 2
   row: 2
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &825415355
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -721,9 +736,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 2
   row: 3
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &844876807
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -848,8 +869,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 2
   row: 1
+=======
+  line: 0
+  row: 0
+>>>>>>> Stashed changes
   isEnemy: 0
 --- !u!64 &846315294
 MeshCollider:
@@ -1011,8 +1037,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 3
   row: 1
+=======
+  line: 0
+  row: 0
+>>>>>>> Stashed changes
   isEnemy: 0
 --- !u!64 &922224208
 MeshCollider:
@@ -1265,9 +1296,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 4
   row: 2
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &952116899
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1392,9 +1429,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 3
   row: 3
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1089041463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1627,6 +1670,17 @@ Transform:
   - {fileID: 952116897}
   m_Father: {fileID: 531182810}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1281926010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3413154082919808173, guid: d920f88300e4df8488f10a60df313562, type: 3}
+  m_PrefabInstance: {fileID: 1634446017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300005307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,9 +1730,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 3
   row: 2
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1300005310
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1839,7 +1899,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 4
+=======
+  line: 0
+>>>>>>> Stashed changes
   row: 0
   isEnemy: 0
 --- !u!64 &1480554761
@@ -1966,9 +2030,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 1
   row: 2
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1511006962
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2093,8 +2163,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 1
   row: 1
+=======
+  line: 0
+  row: 0
+>>>>>>> Stashed changes
   isEnemy: 0
 --- !u!64 &1584137900
 MeshCollider:
@@ -2221,8 +2296,13 @@ MonoBehaviour:
   isOccupied: 0
   currentCard: {fileID: 0}
   line: 0
+<<<<<<< Updated upstream
   row: 3
   isEnemy: 1
+=======
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1599368387
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2298,6 +2378,87 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599368384}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1634446017
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8323712740429763945, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: Tooltip
+      value: 
+      objectReference: {fileID: 561823561}
+    - target: {fileID: -8323712740429763945, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: TooltipText
+      value: 
+      objectReference: {fileID: 1281926010}
+    - target: {fileID: 232461863213135321, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_Name
+      value: Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.040000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365017381632528362, guid: d920f88300e4df8488f10a60df313562, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d920f88300e4df8488f10a60df313562, type: 3}
 --- !u!1 &1641030690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,8 +2636,13 @@ MonoBehaviour:
   isOccupied: 0
   currentCard: {fileID: 0}
   line: 0
+<<<<<<< Updated upstream
   row: 2
   isEnemy: 1
+=======
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1675426350
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2601,9 +2767,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 1
   row: 3
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1677867373
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2979,8 +3151,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 4
   row: 1
+=======
+  line: 0
+  row: 0
+>>>>>>> Stashed changes
   isEnemy: 0
 --- !u!64 &1831097951
 MeshCollider:
@@ -3106,9 +3283,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+<<<<<<< Updated upstream
   line: 4
   row: 3
   isEnemy: 1
+=======
+  line: 0
+  row: 0
+  isEnemy: 0
+>>>>>>> Stashed changes
 --- !u!64 &1909015713
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3370,3 +3553,4 @@ SceneRoots:
   - {fileID: 2036866163}
   - {fileID: 1725457898}
   - {fileID: 531182810}
+  - {fileID: 1634446017}
