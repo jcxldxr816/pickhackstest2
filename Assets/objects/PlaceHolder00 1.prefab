@@ -103,6 +103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   currentCard: {fileID: 0}
+  line: 0
+  row: 0
+  isEnemy: 0
 --- !u!65 &4969211534633921100
 BoxCollider:
   m_ObjectHideFlags: 0

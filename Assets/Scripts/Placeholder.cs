@@ -60,7 +60,7 @@ public class Placeholder : MonoBehaviour
     private void OnMouseEnter()
     {
         // ������ʾռλ����������Է��ÿ��ƣ���ʾ��ɫ
-        if (Phases.selectedCard != null && !isOccupied && SceneManager.GetActiveScene().name != "MainMenu")
+        if (Phases.selectedCard != null && !isOccupied)
         {
             GetComponent<Renderer>().material.color = Color.green; // ������ʾ�ɷ��õ�ռλ��
         }
