@@ -2,40 +2,53 @@ using UnityEngine;
 
 public class Placeholder : MonoBehaviour
 {
-    public bool isOccupied = false; // Indicates whether this placeholder is occupied by a card
-    public Phases currentCard = null; // The Phases object currently occupying this Placeholder
-    public int line;
-    public bool isEnemy = false;
+    public bool isOccupied = false; // 表示此占位符是否被卡牌占用
+    public Phases currentCard = null; // 当前占用此占位符的卡牌对象
+    public int line; // 行号
+    public int row; // 列号
+    public bool isEnemy = false; // 是否是敌人的占位符
+
     private void OnMouseDown()
     {
-        // Ensure a card is selected and this Placeholder is not occupied
-        if (Phases.selectedCard != null && this.isOccupied == false)
+        // 确保有卡牌被选中，并且当前占位符未被占用
+        if (Phases.selectedCard != null && !this.isOccupied)
         {
-            // Get the currently selected card
+            // 获取当前选中的卡牌
             GameObject card = Phases.selectedCard;
             Phases cardScript = card.GetComponent<Phases>();
 
-            // If the card is already on another Placeholder, clear the original Placeholder's occupancy
+            // 如果卡牌已经在另一个占位符上，将原占位符的状态清空，并从数组中删除
             if (cardScript.currentPlaceholder != null)
             {
                 Placeholder oldPlaceholder = cardScript.currentPlaceholder;
+
+                // 从 Card2DArray 移除旧的卡牌引用
+                Phases.RemoveCardFromArray(oldPlaceholder.line, oldPlaceholder.row);
+
+                // 清空旧占位符的状态
                 oldPlaceholder.isOccupied = false;
-                oldPlaceholder.currentCard = null; // Clear the original placeholder's Phases
-                Debug.Log($"Placeholder {oldPlaceholder.gameObject.name} is now unoccupied.");
+                oldPlaceholder.currentCard = null;
+                Debug.Log($"Placeholder {oldPlaceholder.gameObject.name} at ({oldPlaceholder.line}, {oldPlaceholder.row}) is now unoccupied.");
             }
 
-            // Update the card's position to the current Placeholder
-            card.transform.position =new Vector3( transform.position.x,0.2f, transform.position.z); // Move the card to the position of this Placeholder
-            
-            cardScript.currentPlaceholder = this; // Update the Placeholder reference in the card
+            // 将卡牌移动到当前占位符的位置
+            card.transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
 
-            isOccupied = true; // Mark the current Placeholder as occupied
-            currentCard = cardScript; // Set the current Placeholder's Phases
-            currentCard.inField = true; // Mark the card as being on the field
-            // Clear the selected card state
+            // 更新卡牌和占位符之间的关联
+            cardScript.currentPlaceholder = this;
+            this.isOccupied = true;
+            this.currentCard = cardScript;
+
+            // 更新卡牌的属性
+            cardScript.inField = true; // 标记卡牌处于战场中
+
+            // 将卡牌添加到 Phases 的静态二维数组中
+            Phases.AddCardToArray(cardScript, this.line, this.row);
+
+            // 清除已选中的卡牌状态
             Phases.selectedCard = null;
 
-            Debug.Log($"Phases moved to Placeholder {gameObject.name}.");
+            Debug.Log($"Phases {card.name} moved to Placeholder {gameObject.name} at ({line}, {row}).");
         }
         else
         {
@@ -45,16 +58,16 @@ public class Placeholder : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        // Highlight the placeholder: show green if it can accept a card
+        // 高亮显示占位符：如果可以放置卡牌，显示绿色
         if (Phases.selectedCard != null && !isOccupied)
         {
-            GetComponent<Renderer>().material.color = Color.green; // Highlight available placeholder
+            GetComponent<Renderer>().material.color = Color.green; // 高亮显示可放置的占位符
         }
     }
 
     private void OnMouseExit()
     {
-        // Remove highlight
-        GetComponent<Renderer>().material.color = Color.white; // Reset the color
+        // 移除高亮
+        GetComponent<Renderer>().material.color = Color.white; // 恢复颜色
     }
 }
