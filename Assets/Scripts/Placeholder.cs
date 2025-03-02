@@ -33,7 +33,7 @@ public class Placeholder : MonoBehaviour
             }
 
             // �������ƶ�����ǰռλ����λ��
-            card.transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
+            card.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
             // ���¿��ƺ�ռλ��֮��Ĺ���
             cardScript.currentPlaceholder = this;
