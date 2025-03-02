@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TextMeshPro yourHP;
     public TextMeshPro opponentHP;
     public ShopManager shopManager;
+    public TextMeshPro goldText;
 
      private void Awake()
     {
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
         yourHP = obj.GetComponent<TextMeshPro>();
         obj = GameObject.Find("OpponentHPText");
         opponentHP = obj.GetComponent<TextMeshPro>();
+        obj = GameObject.Find("GoldText");
+        goldText = obj.GetComponent<TextMeshPro>();
     }
     public void TakeDamage(int incomingDamage, bool playerTurn)
     {
@@ -135,15 +138,30 @@ public class GameManager : MonoBehaviour
 
         yourHP.text = "Your HP\n" + playerHealth;
         opponentHP.text = "Opponent HP\n" + opponentHealth;
-
+        goldText.text = "Gold\n" + gold;
     }
 
     public static void increaseGold(int amount)
     {
         gold += amount;
     }
-    
-    //TODO: decrease gold
+
+    public void decreaseGold(int amount)
+    {
+        if (gold >= amount)
+        {
+            gold -= amount;
+        }
+        else
+        {
+            gold = 0;
+        }
+    }
+
+    public void increasePlayerHealth(int amount)
+    {
+        playerHealth += amount;
+    }
     
     //TODO: make increase/decrease health functions if they don't exist alr...
 
