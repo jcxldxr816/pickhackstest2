@@ -2750,6 +2750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8da9035796dda0499e60dc23f65519e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  buttonText: {fileID: 0}
 --- !u!114 &1416897474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4441,13 +4443,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963182069}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7069954, y: -0, z: -0, w: 0.70721817}
-  m_LocalPosition: {x: 20.93, y: 6.9956126, z: 32.96049}
-  m_LocalScale: {x: 0.7799056, y: 1, z: 0.40023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.853899, y: -5.8199997, z: -3.6500006}
+  m_LocalScale: {x: 0.7799056, y: 1, z: 0.40022996}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1202430598}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2036866163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979038001
 GameObject:
@@ -4605,17 +4607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef84c9f7b48ef304f932cbdaec40c94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCards:
-  - {fileID: 232461863213135321, guid: 7c267b6cd9ee3424aa0c18bd7f43a98b, type: 3}
-  - {fileID: 232461863213135321, guid: cc2bf2dc1b65b61468b8febb719de4a3, type: 3}
-  - {fileID: 232461863213135321, guid: c48192d95639f7d4eae4da2152afc2a2, type: 3}
-  - {fileID: 232461863213135321, guid: 952f317515232084694cd5aa7f9d0213, type: 3}
-  - {fileID: 232461863213135321, guid: 2c8e60f05838b3340b1bdc455f962b17, type: 3}
-  - {fileID: 232461863213135321, guid: 3b48408b0083ba3449520e4bcdff5b72, type: 3}
-  wave: 0
-  phase: 0
-  playerHealth: 20
-  opponentHealth: 15
+  allCards: []
+  yourHP: {fileID: 932199167}
+  opponentHP: {fileID: 1202430599}
 --- !u!4 &2036866163
 Transform:
   m_ObjectHideFlags: 0
@@ -4630,6 +4624,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1345835318}
+  - {fileID: 1963182073}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -4640,7 +4635,6 @@ SceneRoots:
   - {fileID: 1149760437}
   - {fileID: 1706701640}
   - {fileID: 2036866163}
-  - {fileID: 1963182073}
   - {fileID: 1725457898}
   - {fileID: 531182810}
   - {fileID: 1529638321}

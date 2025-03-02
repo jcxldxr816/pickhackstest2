@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 //using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public static int stage;  // Current phase: 1-Sleep, 2-Plan, 3-Battle
     public static int playerHealth;
     public static int opponentHealth;
+    public TextMeshPro yourHP;
+    public TextMeshPro opponentHP;
 
      private void Awake()
     {
@@ -46,6 +49,10 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         ReSet();
+        GameObject obj = GameObject.Find("YourHPText");
+        yourHP = obj.GetComponent<TextMeshPro>();
+        obj = GameObject.Find("OpponentHPText");
+        opponentHP = obj.GetComponent<TextMeshPro>();
     }
     public void TakeDamage(int incomingDamage, bool playerTurn)
     {
@@ -123,6 +130,9 @@ public class GameManager : MonoBehaviour
         {
             opponentTurn();
         }
+
+        yourHP.text = "Your HP\n" + playerHealth;
+        opponentHP.text = "Opponent HP\n" + opponentHealth;
 
     }
 
