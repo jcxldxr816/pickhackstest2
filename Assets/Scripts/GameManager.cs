@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, allCards.Count);
             GameObject chosenCard = allCards[randomIndex];
-            GameObject newCard = Instantiate(chosenCard);
+            GameObject newCard = Instantiate(chosenCard); //TODO need to specify parent?
             newCard.SetActive(false); //making sure selected card will not be visible
             selectedCards.Add(newCard);
         }
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
                 if (Phases.GetCardFromArray(3, lane) == null)
                 {
                     Phases.AddCardToArray(card.GetComponent<Phases>(), 3, lane);
-                    card.GetComponent<Phases>().transform.position = card.GetComponent<Phases>().currentPlaceholder.transform.position; //issue?
+                    card.GetComponent<Phases>().transform.position = card.GetComponent<Phases>().currentPlaceholder.transform.position; //TODO issue?
                     card.SetActive(true);
                 }
             }
