@@ -126,6 +126,7 @@ MonoBehaviour:
   currentPlaceholder: {fileID: 0}
   activated: 0
   inField: 0
+  cardName: Beehive
   state: 0
   HP: 8
   Damage: 1
@@ -146,7 +147,7 @@ MonoBehaviour:
   TooltipText: {fileID: 3413154082919808173}
   Tooltip: {fileID: 2488279979662877173}
   cardName: Beehive
-  cardDesc: 1 ATK / 8 HP
+  cardDesc: 1 ATK / 8 HP \n Float like a butterfly...
   cardType: offense
   isPlayerOwned: 1
   health: 0
