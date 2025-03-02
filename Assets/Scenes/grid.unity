@@ -4605,6 +4605,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef84c9f7b48ef304f932cbdaec40c94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allCards:
+  - {fileID: 232461863213135321, guid: 7c267b6cd9ee3424aa0c18bd7f43a98b, type: 3}
+  - {fileID: 232461863213135321, guid: cc2bf2dc1b65b61468b8febb719de4a3, type: 3}
+  - {fileID: 232461863213135321, guid: c48192d95639f7d4eae4da2152afc2a2, type: 3}
+  - {fileID: 232461863213135321, guid: 952f317515232084694cd5aa7f9d0213, type: 3}
+  - {fileID: 232461863213135321, guid: 2c8e60f05838b3340b1bdc455f962b17, type: 3}
+  - {fileID: 232461863213135321, guid: 3b48408b0083ba3449520e4bcdff5b72, type: 3}
   wave: 0
   phase: 0
   playerHealth: 20

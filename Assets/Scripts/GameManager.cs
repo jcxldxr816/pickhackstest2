@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 //using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
+    public List<GameObject> allCards;
+    
     public static int gold;   // Player's gold
     public static int round;   // Current round number
     public static int stage;  // Current phase: 1-Sleep, 2-Plan, 3-Battle
@@ -110,10 +113,59 @@ public class GameManager : MonoBehaviour
         {
             BattleStage(); // Trigger RoundBattle phase event
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            opponentTurn();
+        }
     }
 
     public static void increaseGold(int amount)
     {
         gold += amount;
     }
+    
+    //TODO: decrease gold
+    
+    //TODO: make increase/decrease health functions if they don't exist alr...
+
+    public void opponentTurn()
+    {
+        List<GameObject> selectedCards = new List<GameObject>();
+        
+        for (int i = 0; i < 5; i++) //pick 5 random cards (duplicates allowed)
+        {
+            int randomIndex = Random.Range(0, allCards.Count);
+            GameObject chosenCard = allCards[randomIndex];
+            Instantiate(chosenCard);
+            chosenCard.SetActive(false); //making sure selected card will not be visible
+            selectedCards.Add(chosenCard);
+        }
+
+        foreach (var card in selectedCards)
+        {
+            if (card.GetComponent<Phases>().cardType == 0) //support
+            {
+                int lane = Random.Range(0, 5);
+                if (Phases.GetCardFromArray(3, lane) == null)
+                {
+                    Phases.AddCardToArray(card.GetComponent<Phases>(), 3, lane);
+                    card.GetComponent<Phases>().transform.position = card.GetComponent<Phases>().currentPlaceholder.transform.position; //issue
+                    card.SetActive(true);
+                }
+            }
+            else if (card.GetComponent<Phases>().cardType == 1) //offense
+            {
+                int lane = Random.Range(0, 5);
+                if (Phases.GetCardFromArray(2, lane) == null)
+                {
+                    Phases.AddCardToArray(card.GetComponent<Phases>(), 2, lane);
+                    card.GetComponent<Phases>().transform.position = card.GetComponent<Phases>().currentPlaceholder.transform.position;
+                    card.SetActive(true);
+                }
+            }
+        }
+        //TODO call onSleepEnd
+    }
+    
 }
