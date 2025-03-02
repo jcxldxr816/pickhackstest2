@@ -5,36 +5,39 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
     public static int gold;   // Player's gold
-    public int wave;   // Current wave number
-    public int phase;  // Current phase: 0-Hero, 1-Shop1, 2-Shop2, 3-Battle
-    public int playerHealth;
-    public int opponentHealth;
+    public static int round;   // Current round number
+    public static int stage;  // Current phase: 1-Sleep, 2-Plan, 3-Battle
+    public static int playerHealth;
+    public static int opponentHealth;
      private void Awake()
     {
         if (Instance == null)
         {
-            Instance = this;  // Assign the instance
-            DontDestroyOnLoad(gameObject); // Make it persistent
+            Instance = this; //Instantiate GameManager obj
+            DontDestroyOnLoad(gameObject); //Keep it around
         }
         else
         {
-            Destroy(gameObject); // Destroy duplicate GameManagers
+            Destroy(gameObject); //Don't allow clones
         }
     }
 
     public void ReSet()
     {
-        phase = 0;
+        stage = 0;
         gold = 0;
-        wave = 0;
+        round = 0;
         playerHealth = 10;
         opponentHealth = 10;
     }
 
     // Define events
     public delegate void RoundHandler();
-    public static event RoundHandler OnRoundStart;
+    public static event RoundHandler OnRoundSleep;
+    public static event RoundHandler OnRoundPlan;
+    public static event RoundHandler OnRoundPlanEnd;
     public static event RoundHandler OnRoundBattle;
+    public static event RoundHandler OnRoundBattleEnd;
     public void Start()
     {
         ReSet();
@@ -71,18 +74,27 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Opponent Killed!");
     }
-    public void RoundStart()
+    public void SleepStage()
     {
-        Debug.Log("Round Start, Entering Shop1 Phase");
-        phase = 1; // Set phase to Shop1
-        OnRoundStart?.Invoke(); // Trigger OnRoundStart event
+        Debug.Log("Entering Sleep Phase");
+        stage = 1; // Set stage to Sleep
+        OnRoundSleep?.Invoke(); // Trigger OnRoundSleep event
     }
-
-    public void RoundBattle()
+    public void PlanStage()
+    {
+        Debug.Log("Round Start, Entering Plan Phase");
+        stage = 2; // Set stage to Plan
+        OnRoundPlan?.Invoke();
+        //Do stuff 
+        OnRoundPlanEnd?.Invoke();
+    }
+    public void BattleStage()
     {
         Debug.Log("Round Start, Entering Battle Phase");
-        phase = 3; // Set phase to Battle
+        stage = 3; // Set stage to Battle
         OnRoundBattle?.Invoke(); // Trigger OnRoundBattle event
+        //Do battle stuff
+        OnRoundBattleEnd?.Invoke();
     }
 
     private void Update()
@@ -92,11 +104,11 @@ public class GameManager : MonoBehaviour
         {
             print("one pressed");
             
-            RoundStart(); // Trigger RoundStart phase event
+            SleepStage(); // Trigger RoundStart phase event
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            RoundBattle(); // Trigger RoundBattle phase event
+            BattleStage(); // Trigger RoundBattle phase event
         }
     }
 

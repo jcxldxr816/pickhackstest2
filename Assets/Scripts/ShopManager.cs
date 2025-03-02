@@ -12,14 +12,14 @@ public class ShopManager : MonoBehaviour
     private void OnEnable()
     {
         // Subscribe to GameManager events
-        GameManager.OnRoundStart += OnRoundStart;
+        GameManager.OnRoundPlan += OnRoundPlan;
         GameManager.OnRoundBattle += OnRoundBattle;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from GameManager events
-        GameManager.OnRoundStart -= OnRoundStart;
+        GameManager.OnRoundPlan -= OnRoundPlan;
         GameManager.OnRoundBattle -= OnRoundBattle;
     }
 
@@ -71,8 +71,8 @@ public class ShopManager : MonoBehaviour
         
     }
 
-    // Respond to the `OnRoundStart` event
-    public void OnRoundStart()
+    // Respond to the `OnRoundPlan` event
+    public void OnRoundPlan()
     {
         Debug.Log("Shop Refreshing for Round Start");
         RefreshShop(1); // Refresh shop, showing cards

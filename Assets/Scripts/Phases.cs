@@ -19,14 +19,14 @@ public class Phases : MonoBehaviour
     private void OnEnable()
     {
         // Subscribe to events from GameManager
-        GameManager.OnRoundStart += OnRoundStart;
+        GameManager.OnRoundPlan += OnRoundPlan;
         GameManager.OnRoundBattle += OnRoundBattle;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from events to prevent memory leaks or invalid calls
-        GameManager.OnRoundStart -= OnRoundStart;
+        GameManager.OnRoundPlan -= OnRoundPlan;
         GameManager.OnRoundBattle -= OnRoundBattle;
     }
 
@@ -60,18 +60,18 @@ public class Phases : MonoBehaviour
         }
     }
 
-    // Respond to GameManager's OnRoundStart event
-    private void OnRoundStart()
+    // Respond to GameManager's OnRoundPlan event
+    private void OnRoundPlan()
     {
         if (!inField)
         {
-            Debug.Log($"Card {gameObject.name} is still in shop during OnRoundStart.");
+            Debug.Log($"Card {gameObject.name} is still in shop during OnRoundPlan.");
             // Perform any logic, such as resetting state or preparing for refresh
             state = 1; // Still in the shop
         }
         else
         {
-            Debug.Log($"Card {gameObject.name} is in field during OnRoundStart.");
+            Debug.Log($"Card {gameObject.name} is in field during OnRoundPlan.");
             // Perform any logic, such as making it unsellable or preparing for battle
         }
     }
