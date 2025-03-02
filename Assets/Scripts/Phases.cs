@@ -9,6 +9,7 @@ public class Phases : MonoBehaviour
     public bool activated = false;
     public bool inField = false;
 
+    public string cardName = "";
     public int state = 0; // 0: in shop, 1: off battle, 2: in battle
     public int HP = 0;
     public int Damage = 0;
@@ -186,5 +187,25 @@ public class Phases : MonoBehaviour
             Debug.LogError($"Invalid index: Card2DArray[{row}, {col}] is out of bounds.");
             return null;
         }
+    }
+
+    public void supportEffect()
+    {
+        if (cardType == 0)
+        {
+            switch (cardName)
+            {
+                case "GoldBoost":
+                    GameManager.increaseGold(5);
+                    break;
+                case "DamageBoost":
+                    GetCardFromArray(currentPlaceholder.row +1, currentPlaceholder.line).Damage += 5;
+                    break;
+                case "HealthBoost":
+                    GetCardFromArray(currentPlaceholder.row + 1, currentPlaceholder.line).HP += 3;
+                    break;
+            }
+        }
+        
     }
 }

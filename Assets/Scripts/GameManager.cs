@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
-    public int gold;   // Player's gold
+    public static int gold;   // Player's gold
     public int wave;   // Current wave number
     public int phase;  // Current phase: 0-Hero, 1-Shop1, 2-Shop2, 3-Battle
     public int playerHealth;
@@ -98,5 +98,10 @@ public class GameManager : MonoBehaviour
         {
             RoundBattle(); // Trigger RoundBattle phase event
         }
+    }
+
+    public static void increaseGold(int amount)
+    {
+        gold += amount;
     }
 }
