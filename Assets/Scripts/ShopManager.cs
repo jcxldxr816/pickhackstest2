@@ -56,11 +56,13 @@ public class ShopManager : MonoBehaviour
             GameObject cardInstance = Instantiate(cardPrefab, shopBar);
 
             // Set the position of the instance (adjust layout as needed)
-            cardInstance.transform.localPosition = new Vector3(i * 1.0f-4, 0f, 0f);
+            cardInstance.transform.position = shopBar.position;
+            cardInstance.transform.localPosition = new Vector3(i * 5.0f - 10.0f, 6.0f, -5.0f);
             cardInstance.transform.rotation = this.transform.rotation;
-            // cardInstance.transform.rotation.y = 
-            cardInstance.transform.localScale = new Vector3(cardInstance.transform.lossyScale.x * 0.25f, cardInstance.transform.lossyScale.y * 0.25f, cardInstance.transform.lossyScale.z * 0.25f);
-            //cardInstance.CardController = this.GetComponent<CardController>();
+            
+            // Vector3 parentScale = transform.parent.lossyScale;
+            // transform.localScale = new Vector3((1 / parentScale.x) * 2.5f, (1 / parentScale.y) * 4, 1 / parentScale.z);
+            
             // Add to the current shop list
             currentShopCards.Add(cardInstance);
         }
